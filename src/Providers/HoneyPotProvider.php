@@ -11,6 +11,8 @@ use DiamondHoneyPot\Facades\HoneyPot as HoneyPotFacade;
 class HoneyPotProvider extends ServiceProvider
 {
 
+    private $failureMessage = 'Possible Spam Attack';
+
     /**
      * In this boot function, we're going to make sure that the
      * session key exists for us
@@ -19,18 +21,31 @@ class HoneyPotProvider extends ServiceProvider
      */
     public function boot()
     {
+        // create the session storage
         if (!session()->exists('honeypot_names')) {
             session()->put('honeypot_names', []);
+        }
+
+        // Publishing Config
+        $this->publishes([
+            __DIR__ . '/../config' => config_path()
+        ], 'config');
+
+        // Merge Config
+        $this->mergeConfigFrom(__DIR__ . '/../config/honeypot.php', 'honeypot');
+
+        if (!empty(config('honeypot.failureMessage'))) {
+            $this->failureMessage = config('honeypot.failureMessage');
         }
 
         // add our validators
         Validator::extend('honeypot', function ($attribute, $value, $parameters, $validator) {
             return HoneyPotFacade::validateHoneyPot($attribute, $value);
-        }, 'Possible Spam Input.');
+        }, _($this->failureMessage));
 
         Validator::extend('honeypot_time', function ($attribute, $value, $parameters, $validator) {
             return HoneyPotFacade::validateHoneyPotTime($attribute, $value, $parameters);
-        }, 'Possible Spam Input.');
+        }, _($this->failureMessage));
 
         // adds a blade directive
         Blade::directive('honeypot', function ($expression) {

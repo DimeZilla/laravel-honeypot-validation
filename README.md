@@ -2,6 +2,14 @@
 
 This will generate honeypot validation fields that can be easily inserted into any form.
 
+## Version
+This package was originally developed for Laravel 5.6. I have not tested for backwards compatibility.
+
+# Configuration
+To publish the config file run the following:
+```
+
+```
 ## Credit
 I want to give credit to Arjhay Delos Santos <devarjhay> for this awesome repo: [https://github.com/devarjhay/honeypot](https://github.com/devarjhay/honeypot) from which a lot of this package is based on.
 

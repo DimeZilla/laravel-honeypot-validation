@@ -20,4 +20,9 @@ return [
      * The above example will change the time difference to 8 seconds
      */
     'time' => 3,
+
+    /**
+     * When honeypot validation fails, this will get used to notify the user
+     */
+    'failureMessage' => 'Possible Spam Attack',
 ];
