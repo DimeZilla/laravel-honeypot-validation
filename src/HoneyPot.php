@@ -71,14 +71,7 @@ class HoneyPot
             return true;
         }
 
-        $session_names = $this->sessionNames();
-        // if the field name shows up in our stored honeypot names
-        // then lets make sure that the value is empty
-        if (in_array($name, $session_names)) {
-            return empty($value);
-        }
-
-        return true;
+        return is_null($value) || $value === "";
     }
 
     /**

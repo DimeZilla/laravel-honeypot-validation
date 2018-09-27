@@ -53,8 +53,7 @@ class HoneyPotProvider extends ServiceProvider
             if (!empty($expression)) {
                 $name = $expression;
             }
-
-            return HoneyPotFacade::make($expression);
+            return '<?php echo app(\'honeypot\')->make(' . $expression . '); ?>';
         });
     }
 
