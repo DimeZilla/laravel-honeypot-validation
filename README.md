@@ -91,9 +91,5 @@ Now you need to add the validation rules to your form request. The necessary rul
 ....
 ```
 
-Here we add the names of the input fields for the honeypot and tell it to use the validation rules `honeypot` and `honeypot_time` respectively. The `honeypot` rule takes no arguments. If the value is not empty, then it will fail. The `honeypot_time` rule does take a single argumeny. That is the time in seconds from which the form was created to which the form was submitted. This option is *optional*. There is a default that you can provide for this function in config. If there is no default in config, the package will fallback to 3 seconds.
+Here we add the names of the input fields for the honeypot and tell it to use the validation rules `honeypot` and `honeypot_time` respectively. The `honeypot` rule takes no arguments. If the form value is not empty, then it will fail. The `honeypot_time` rule does take a single argument. That is the time in seconds from which the form was created to which the form was submitted. This option is *optional*. There is a default that you can provide for this function in config. If there is no default in config, the package will fallback to 3 seconds.
 
-
-## How is this different?
-
-This package provides a means to create sesison based field names for your honey pot fields.
