@@ -1,0 +1,32 @@
+{
+    "name": "dimezilla/laravel-honeypot-validation",
+    "description": "Simple Honeypot validation for laravel 5.6 and beyond",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dimezilla",
+            "email": "diamond.joshh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DiamondHoneyPot\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DiamondHoneyPot\\Providers\\HoneyPotProvider"
+            ],
+            "aliases": {
+                "HoneyPot": "DiamondHoneyPot\\Facades\\HoneyPot"
+            }
+        }
+    }
+}
